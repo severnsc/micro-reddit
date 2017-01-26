@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	before_save {email.downcase}
+	before_save {email.downcase!}
 	has_many :posts
 	has_many :comments
 	validates :username, presence: true
