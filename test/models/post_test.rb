@@ -3,11 +3,12 @@ require 'test_helper'
 class PostTest < ActiveSupport::TestCase
   
   def setup
-  	@post = Post.new(url: "http://theodinproject.com", title: "What a cool site!", body: "This is a great site for learning Rails web development.", user_id: 1)
+  	@post = Post.new(url: "http://www.theodinproject.com", title: "What a cool site!", body: "This is a great site for learning Rails web development.", user_id: 1)
   end
 
   test "post should be valid" do
-  	assert @post.valid?
+  	User.create(id: 1, username: "example", email: "severnsc@gmail.com", password: "123456789")
+  	assert @post.valid?, "#{@post.errors.inspect}"
   end
 
   test "url should be present" do
